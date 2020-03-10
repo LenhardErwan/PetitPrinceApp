@@ -7,17 +7,9 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path: 'articles',
-    loadChildren: () => import('./articles/articles.module').then( m => m.ArticlesPageModule)
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
   },
-  {
-    path: 'dates',
-    loadChildren: () => import('./dates/dates.module').then( m => m.DatesPageModule)
-  },
-  {
-    path: 'galeries',
-    loadChildren: () => import('./galeries/galeries.module').then( m => m.GaleriesPageModule)
-  }
 ];
 @NgModule({
   imports: [

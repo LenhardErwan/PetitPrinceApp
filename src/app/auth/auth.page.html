@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Connexion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <ion-item>
+      <ion-label position="float">Login : </ion-label>
+      <ion-input type="text" [(ngModel)]="login" maxlength="20" placeholder="Entrez votre mot de login" autocomplete autofocus clear-input ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="float">Mot de passe : </ion-label>
+      <ion-input type="password" [(ngModel)]="passwd" maxlength="100" placeholder="Entrez votre mot de passe" clear-input="true" ></ion-input>
+    </ion-item>
+    <ion-button (click)="connection($event)" color="tertiary">
+      <ion-icon slot="end" name="enter-outline"></ion-icon>
+      Connexion
+      <ion-spinner slot="start" *ngIf="waiting" slot="start" name="dots"></ion-spinner>
+    </ion-button>
+  </div>
+</ion-content>
