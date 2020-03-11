@@ -17,6 +17,10 @@ export class ArticlesPage implements OnInit {
       .subscribe((data) => {
         this.reponse = data;
         this.reponse = this.reponse.articles;
+
+        this.reponse.forEach(article => {
+          article.date_formated = new Date(Date.parse(article.date)).toLocaleString()
+        });
         console.log(this.reponse);
       });
 
