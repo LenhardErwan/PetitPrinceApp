@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 @Component({
   selector: 'app-articles',
@@ -7,9 +8,9 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./articles.page.scss'],
 })
 export class ArticlesPage implements OnInit {
-  reponse: any;
-  photos: any;
-  constructor(private http: HttpClient) { 
+  private reponse: any;
+
+  constructor(private http: HttpClient, private authGuard: AuthGuardService) { 
     this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login=classe1&mdp=mdp1')
       .subscribe((data) => {
         this.reponse = data;
@@ -22,10 +23,8 @@ export class ArticlesPage implements OnInit {
   ngOnInit() {
   }
 
-
-
-
-
-
+  logout() {
+    this.authGuard.disconnect();
+  }
 }
 
