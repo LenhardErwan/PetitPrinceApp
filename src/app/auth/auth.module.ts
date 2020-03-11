@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { AuthPageRoutingModule } from './auth-routing.module';
 
 import { AuthPage } from './auth.page';
-import { AuthGuardService } from '../services/auth-guard.service';
 
 @NgModule({
   imports: [
@@ -17,6 +16,5 @@ import { AuthGuardService } from '../services/auth-guard.service';
     AuthPageRoutingModule
   ],
   declarations: [AuthPage],
-  providers: [AuthGuardService]
 })
 export class AuthPageModule {}

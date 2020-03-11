@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthGuardService } from '../services/auth-guard.service';
+import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -12,7 +13,7 @@ export class AuthPage implements OnInit {
   private passwd: string;
   private waiting: boolean;
 
-  constructor(private authGuard: AuthGuardService, private toastCtrl: ToastController) {
+  constructor(private authGuard: AuthGuardService, private toastCtrl: ToastController, private router: Router) {
     this.passwd = this.login = "";
     this.waiting = false;
   }
@@ -31,7 +32,7 @@ export class AuthPage implements OnInit {
       let result = await this.authGuard.auth(this.login, this.passwd);
       if(result.error) this.toastError(result.error);
       else {
-        //ROUTE
+        this.router.navigateByUrl('/tabs');
       }
     }
     catch(e) {
