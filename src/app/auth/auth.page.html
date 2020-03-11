@@ -14,6 +14,10 @@
       <ion-label position="float">Mot de passe : </ion-label>
       <ion-input type="password" [(ngModel)]="passwd" maxlength="100" placeholder="Entrez votre mot de passe" clear-input="true" ></ion-input>
     </ion-item>
+    <ion-item>
+      Se souvenir de moi : 
+      <ion-checkbox slot="end" [(ngModel)]="keep"></ion-checkbox>
+    </ion-item>
     <ion-button (click)="connection($event)" color="tertiary">
       <ion-icon slot="end" name="enter-outline"></ion-icon>
       Connexion
