@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 @Component({
   selector: 'app-dates',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatesPage implements OnInit {
 
-  constructor() { }
+  constructor(private authGuard: AuthGuardService) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.authGuard.disconnect();
   }
 
 }

@@ -11,6 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: 'dates',
+        canActivate: [AuthGuardService],
         children: [
           {
             path: '',
@@ -21,6 +22,7 @@ const routes: Routes = [
       },
       {
         path: 'articles',
+        canActivate: [AuthGuardService],
         children: [
           {
             path: '',
@@ -31,6 +33,7 @@ const routes: Routes = [
       },
       {
         path: 'galeries',
+        canActivate: [AuthGuardService],
         children: [
           {
             path: '',
