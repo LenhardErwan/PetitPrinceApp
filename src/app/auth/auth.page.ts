@@ -38,14 +38,18 @@ export class AuthPage implements OnInit {
     }
   }
 
-  async saveInfo() {
+  async saveInfo(keep: boolean) {
+    const o = keep ? {
+      login: this.login,
+      passwd: this.passwd,
+      keep: this.keep
+    } :
+    {
+      keep: this.keep
+    }
     await Storage.set({
       key: 'authInfo',
-      value: JSON.stringify({
-        login: this.login,
-        passwd: this.passwd,
-        keep: this.keep
-      })
+      value: JSON.stringify(o)
     });
   }
 
@@ -61,7 +65,8 @@ export class AuthPage implements OnInit {
       let result = await this.authGuard.auth(this.login, this.passwd);
       if(result.error) this.toastError(result.error);
       else {
-        this.saveInfo();
+        if(!this.keep) this.login = this.passwd = ""; 
+        this.saveInfo(this.keep);
         this.router.navigateByUrl('/tabs');
       }
     }
