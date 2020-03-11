@@ -1,0 +1,14 @@
+.bg-color {
+    background: rgb(241, 241, 241);
+}
+
+.limitchar {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 75ch;
+}
+
+.marg {
+    text-align: center;
+}
