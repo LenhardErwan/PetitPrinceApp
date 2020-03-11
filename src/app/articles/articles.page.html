@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Articles</ion-title>
+    <ion-button slot="end" fill="clear" color="medium" (click)="contact($event)" >
+      <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+    </ion-button>
     <ion-button slot="end" fill="clear" color="medium" (click)="logout($event)" >
       <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
     </ion-button>
@@ -8,7 +11,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-row *ngFor="let article of reponse">
+  <ion-row *ngFor="let article of articles">
     <ion-card class="bg-color">
       <img *ngIf="article.photos[0]" src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{ article.photos[0].image }}">
       <ion-card-header>
@@ -17,9 +20,9 @@
       </ion-card-header>
       <ion-card-content>
         <p class="limitchar"> {{ article.texte }} </p> <br>
-        {{ article.date }} <br>
+        {{ article.date_formated }} <br>
         <div class="marg"> 
-            <ion-button fill="outline" class="marg" slot="end">Lire</ion-button>
+            <ion-button fill="outline" class="marg" slot="end" (click)="viewComplete( article )">Lire</ion-button>
         </div>
       </ion-card-content>
     </ion-card>

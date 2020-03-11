@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ArticlesPageRoutingModule } from './articles-routing.module';
 
 import { ArticlesPage } from './articles.page';
+import { ArticlePageModule } from './article/article.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { ArticlesPage } from './articles.page';
     FormsModule,
     IonicModule,
     HttpClientModule,
-    ArticlesPageRoutingModule
+    ArticlesPageRoutingModule,
+    ArticlePageModule
   ],
   declarations: [ArticlesPage]
 })

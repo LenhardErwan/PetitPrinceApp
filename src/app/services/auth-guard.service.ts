@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from "@angular/router";
+import { APiInterfaceService } from './api-interface.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,9 @@ import { Router, CanActivate } from "@angular/router";
 export class AuthGuardService implements CanActivate {
   private authInfo: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private apiInt: APiInterfaceService) {
     this.authInfo = {
-      authenticated: true,
+      authenticated: false,
       login: null,
       passwd: null
     }
@@ -19,10 +20,6 @@ export class AuthGuardService implements CanActivate {
     this.authInfo.authenticated = value;
   }
 
-  private toogleAuth() {
-    this.authInfo.authenticated = !this.authInfo.authenticated;
-  }
-
   private setAuth(login: string, passwd: string) {
     this.authInfo.login = login;
     this.authInfo.passwd = passwd;
@@ -30,14 +27,10 @@ export class AuthGuardService implements CanActivate {
   }
 
   async auth(login: string, passwd: string) {
-    let result = await fetch(`http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?connexion&login=${login}&mdp=${passwd}`);
-    let data = await result.json();
+    let result = await this.apiInt.connection(login, passwd);
+    if( result.success ) this.setAuth(login, passwd);
 
-    if(data.resultat != "OK") return {auth: this.authInfo.authenticated, error: data.erreur};
-    else {
-      this.setAuth(login, passwd);
-      return {auth: this.authInfo.authenticated, error: false};
-    }
+    return {auth: this.authInfo.authenticated, error: result.error};
   }
 
   disconnect() {
@@ -51,5 +44,9 @@ export class AuthGuardService implements CanActivate {
     if(!this.authInfo.authenticated) this.router.navigate(["auth"]);
 
     return this.authInfo.authenticated;
+  }
+
+  get info() {
+    return new Map().set("login", this.authInfo.login).set("mdp", this.authInfo.passwd);
   }
 }
