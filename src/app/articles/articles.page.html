@@ -11,5 +11,22 @@
 </ion-header>
 
 <ion-content>
+  <ion-row *ngFor="let article of reponse">
+    <ion-card class="bg-color">
+      <img *ngIf="article.photos[0]" src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{ article.photos[0].image }}">
+      <ion-card-header>
+        <ion-card-subtitle> <ion-icon *ngIf="article.important" name="warning"></ion-icon> {{ article.categorie }} </ion-card-subtitle>
+        <ion-card-title> <strong> {{ article.titre }} </strong>  </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p class="limitchar"> {{ article.texte }} </p> <br>
+        {{ article.date }} <br>
+        <div class="marg"> 
+            <ion-button fill="outline" class="marg" slot="end">Lire</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-row>
+
 
 </ion-content>

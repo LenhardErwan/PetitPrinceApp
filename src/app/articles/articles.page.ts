@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { ContactPage } from '../contact/contact.page';
 
@@ -9,8 +10,17 @@ import { ContactPage } from '../contact/contact.page';
   styleUrls: ['./articles.page.scss'],
 })
 export class ArticlesPage implements OnInit {
+  private reponse: any;
 
-  constructor(private authGuard: AuthGuardService, private modalCtrl: ModalController) {}
+  constructor(private authGuard: AuthGuardService, private modalCtrl: ModalController, private http: HttpClient) {
+    this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login=classe1&mdp=mdp1')
+      .subscribe((data) => {
+        this.reponse = data;
+        this.reponse = this.reponse.articles;
+        console.log(this.reponse);
+      });
+
+  }
 
   ngOnInit() {
   }
@@ -28,3 +38,4 @@ export class ArticlesPage implements OnInit {
   }
 
 }
+

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
 import { IonicModule } from '@ionic/angular';
 
 import { ArticlesPageRoutingModule } from './articles-routing.module';
@@ -13,6 +13,7 @@ import { ArticlesPage } from './articles.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    HttpClientModule,
     ArticlesPageRoutingModule
   ],
   declarations: [ArticlesPage]
