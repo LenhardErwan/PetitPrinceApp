@@ -22,7 +22,7 @@
         <p class="limitchar"> {{ article.texte }} </p> <br>
         {{ article.date_formated }} <br>
         <div class="marg"> 
-            <ion-button fill="outline" class="marg" slot="end">Lire</ion-button>
+            <ion-button fill="outline" class="marg" slot="end" (click)="viewComplete( article )">Lire</ion-button>
         </div>
       </ion-card-content>
     </ion-card>

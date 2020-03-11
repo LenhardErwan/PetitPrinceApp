@@ -4,6 +4,8 @@ import { AuthGuardService } from '../services/auth-guard.service';
 import { APiInterfaceService } from '../services/api-interface.service';
 
 import { ContactPage } from '../contact/contact.page';
+import { ArticlePage } from './article/article.page';
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-articles',
@@ -37,6 +39,24 @@ export class ArticlesPage implements OnInit {
   async contact() {
     const modal = await this.modalCtrl.create({
       component: ContactPage
+    });
+
+    modal.present();
+  }
+
+  async viewComplete(e) {
+    console.log(e);
+    const modal = await this.modalCtrl.create({
+      component: ArticlePage,
+      componentProps: {
+        title: e.titre,
+        date_formated: e.date_formated,
+        category: e.categorie,
+        important: e.important,
+        class: e.classe,
+        text: e.texte,
+        photos: e.photos
+      }
     });
 
     modal.present();
