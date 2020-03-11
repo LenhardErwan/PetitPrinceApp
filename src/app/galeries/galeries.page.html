@@ -15,7 +15,7 @@
     <ion-card class="bg-color">
       <img *ngIf="galerie.photos[0]" src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{ galerie.photos[0].image }}">
       <ion-card-header>
-        <ion-card-subtitle> <ion-icon *ngIf="galerie.important" name="warning"></ion-icon> classe {{ galerie.classe }} </ion-card-subtitle>
+        <ion-card-subtitle> classe {{ galerie.classe }} </ion-card-subtitle>
         <ion-card-title> <strong> {{ galerie.titre }} </strong>  </ion-card-title>
       </ion-card-header>
       <ion-card-content>
