@@ -1,8 +1,9 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AuthGuardService } from '../services/auth-guard.service';
-import { ContactPage } from '../contact/contact.page';
 import { APiInterfaceService } from '../services/api-interface.service';
+
+import { ContactPage } from '../contact/contact.page';
 
 @Component({
   selector: 'app-articles',
