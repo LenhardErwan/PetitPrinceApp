@@ -14,7 +14,7 @@ import { ArticlesPage } from './articles.page';
     FormsModule,
     IonicModule,
     HttpClientModule,
-    ArticlesPageRoutingModule
+    ArticlesPageRoutingModule,
   ],
   declarations: [ArticlesPage]
 })

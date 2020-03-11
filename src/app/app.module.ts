@@ -9,16 +9,18 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuardService } from './services/auth-guard.service';
-import { ContactPage } from './contact/contact.page';
+import { APiInterfaceService } from './services/api-interface.service';
+import { ContactPageModule } from './contact/contact.module';
 
 @NgModule({
-  declarations: [AppComponent, ContactPage],
-  entryComponents: [ContactPage],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  declarations: [AppComponent],
+  entryComponents: [],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, ContactPageModule],
   providers: [
     StatusBar,
     SplashScreen,
     AuthGuardService,
+    APiInterfaceService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { HttpClient } from '@angular/common/http';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { ContactPage } from '../contact/contact.page';
+import { APiInterfaceService } from '../services/api-interface.service';
 
 @Component({
   selector: 'app-articles',
@@ -10,19 +10,19 @@ import { ContactPage } from '../contact/contact.page';
   styleUrls: ['./articles.page.scss'],
 })
 export class ArticlesPage implements OnInit {
-  private reponse: any;
+  private articles: Array<any>;
 
-  constructor(private authGuard: AuthGuardService, private modalCtrl: ModalController, private http: HttpClient) {
-    this.http.get('http://www.sebastien-thon.fr/cours/M4104Cip/projet/index.php?login=classe1&mdp=mdp1')
-      .subscribe((data) => {
-        this.reponse = data;
-        this.reponse = this.reponse.articles;
+  constructor(private authGuard: AuthGuardService, private apiInt: APiInterfaceService, private modalCtrl: ModalController) {
+    const data = apiInt.getData();
+    if(data.articles) this.articles = data.articles;
 
-        this.reponse.forEach(article => {
-          article.date_formated = new Date(Date.parse(article.date)).toLocaleString()
-        });
-        console.log(this.reponse);
-      });
+    this.articles.sort( (a:any, b:any) => {
+      return Date.parse(a.date) > Date.parse(b.date) ? -1 : 1;
+    })
+
+    this.articles.forEach(article => {
+      article.date_formated = new Date(Date.parse(article.date)).toLocaleString()
+    });
 
   }
 
