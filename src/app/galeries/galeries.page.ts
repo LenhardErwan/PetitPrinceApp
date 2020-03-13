@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ModalController } from '@ionic/angular';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { APiInterfaceService } from '../services/api-interface.service';
 
 import { ContactPage } from '../contact/contact.page';
+import { GaleriePage } from './galerie/galerie.page';
 
 @Component({
   selector: 'app-galeries',
@@ -26,8 +26,6 @@ export class GaleriesPage implements OnInit {
       article.date_formated = new Date(Date.parse(article.date)).toLocaleString()
     });
 
-    console.log(this.galeries);
-
   }
 
   ngOnInit() {
@@ -40,6 +38,21 @@ export class GaleriesPage implements OnInit {
   async contact() {
     const modal = await this.modalCtrl.create({
       component: ContactPage
+    });
+
+    modal.present();
+  }
+
+  async viewComplete(e) {
+    const modal = await this.modalCtrl.create({
+      component: GaleriePage,
+      componentProps: {
+        title: e.titre,
+        date_formated: e.date_formated,
+        class: e.classe,
+        text: e.texte,
+        photos: e.photos
+      }
     });
 
     modal.present();

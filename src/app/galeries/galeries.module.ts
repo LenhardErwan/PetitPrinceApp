@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { GaleriesPageRoutingModule } from './galeries-routing.module';
 
 import { GaleriesPage } from './galeries.page';
+import { GaleriePageModule } from './galerie/galerie.module';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { GaleriesPage } from './galeries.page';
     FormsModule,
     IonicModule,
     HttpClientModule,
-    GaleriesPageRoutingModule
+    GaleriesPageRoutingModule,
+    GaleriePageModule
   ],
   declarations: [GaleriesPage]
 })

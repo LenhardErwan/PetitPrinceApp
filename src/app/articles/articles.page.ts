@@ -5,7 +5,6 @@ import { APiInterfaceService } from '../services/api-interface.service';
 
 import { ContactPage } from '../contact/contact.page';
 import { ArticlePage } from './article/article.page';
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-articles',
@@ -45,7 +44,6 @@ export class ArticlesPage implements OnInit {
   }
 
   async viewComplete(e) {
-    console.log(e);
     const modal = await this.modalCtrl.create({
       component: ArticlePage,
       componentProps: {

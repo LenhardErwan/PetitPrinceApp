@@ -20,8 +20,8 @@
     </ion-item>
     <ion-button (click)="connection($event)" color="tertiary">
       <ion-icon slot="end" name="enter-outline"></ion-icon>
-      Connexion
-      <ion-spinner slot="start" *ngIf="waiting" slot="start" name="dots"></ion-spinner>
+      <span *ngIf="!waiting">Connexion</span>
+      <ion-spinner *ngIf="waiting" name="dots"></ion-spinner>
     </ion-button>
   </div>
 </ion-content>

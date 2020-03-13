@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ title }}</ion-title>
+    <ion-button slot="end" fill="clear" color="medium" (click)="dismiss($event)">
+      <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <img *ngIf="photos[0]" src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{ photos[0].image }}">
+    <p> {{ text }} </p>
+    {{ date_formated }}
+    <!-- TODO Make a good view of all photos -->
+  </div>
+</ion-content>

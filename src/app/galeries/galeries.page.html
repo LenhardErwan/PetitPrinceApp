@@ -20,9 +20,9 @@
       </ion-card-header>
       <ion-card-content>
         <p class="limitchar"> {{ galerie.texte }} </p> <br>
-        {{ galerie.date }} <br>
+        {{ galerie.date_formated }} <br>
         <div class="marg"> 
-            <ion-button fill="outline" class="marg" slot="end">Ouvrir</ion-button>
+            <ion-button fill="outline" class="marg" slot="end" (click)="viewComplete( galerie )">Ouvrir</ion-button>
         </div>
       </ion-card-content>
     </ion-card>
