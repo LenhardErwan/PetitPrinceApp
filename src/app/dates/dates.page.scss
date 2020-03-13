@@ -1,0 +1,23 @@
+.bg-color {
+    background: rgb(254, 255, 239)
+}
+
+.limitchar {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 75ch;
+}
+
+.mid {
+    text-align: center;
+    
+    width: 98%;
+    margin-bottom: 5%;
+    margin-top: 2%;
+}
+
+/* .back-color {
+    background-color: #e8fdcd;
+}
+*/

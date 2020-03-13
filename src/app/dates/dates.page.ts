@@ -21,8 +21,8 @@ export class DatesPage implements OnInit {
       return Date.parse(a.date) > Date.parse(b.date) ? -1 : 1;
     })
 
-    this.dates.forEach(article => {
-      article.date_formated = new Date(Date.parse(article.date)).toLocaleString()
+    this.dates.forEach(dates => {
+      dates.date_formated = new Date(Date.parse(dates.date)).toLocaleString()
     });
 
     console.log(this.dates);

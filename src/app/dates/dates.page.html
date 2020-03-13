@@ -11,5 +11,16 @@
 </ion-header>
 
 <ion-content>
+    <ion-row class="mid" *ngFor="let date of dates">
+      <ion-card class="bg-color mid">
+        <ion-card-header>
+          <ion-card-subtitle> {{ date.titre }} </ion-card-subtitle>
+          <ion-card-title> <strong> {{ date.date_formated }} </strong>  </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="limitchar"> {{ date.texte }} </p> <br>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
 
 </ion-content>
