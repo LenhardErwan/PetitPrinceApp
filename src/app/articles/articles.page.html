@@ -25,6 +25,12 @@
           <div class="marg"> 
               <ion-button fill="outline" class="marg" slot="end" (click)="viewComplete( article )">Lire</ion-button>
           </div>
+          <div class="marg"> 
+              
+              <ion-label>Fav</ion-label>
+              <ion-toggle (ionChange)="fav_change($event)"></ion-toggle>
+            
+          </div>
         </ion-card-content>
       </ion-card>
     </ion-row>
