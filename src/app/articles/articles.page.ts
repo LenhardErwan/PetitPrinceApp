@@ -43,6 +43,14 @@ export class ArticlesPage implements OnInit {
     modal.present();
   }
 
+  fav_change(event: any) {
+    if (event.target.checked) { // Ajout aux favoris
+      console.log("add fav")
+    } else { // suppression des favoris
+      console.log("del fav"); 
+    }
+  }
+
   async viewComplete(e) {
     const modal = await this.modalCtrl.create({
       component: ArticlePage,
