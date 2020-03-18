@@ -1,8 +1,7 @@
 {
   "name": "PetitPrince",
   "integrations": {
-    "capacitor": {},
-    "cordova": {}
+    "capacitor": {}
   },
   "type": "angular"
 }

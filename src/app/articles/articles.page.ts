@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Storage } from '@ionic/storage';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { APiInterfaceService } from '../services/api-interface.service';
 
@@ -12,13 +11,10 @@ import { ArticlePage } from './article/article.page';
   templateUrl: './articles.page.html',
   styleUrls: ['./articles.page.scss'],
 })
-
-
-
 export class ArticlesPage implements OnInit {
   private articles: Array<any>;
- 
-  constructor(private authGuard: AuthGuardService, private apiInt: APiInterfaceService, private modalCtrl: ModalController, private storage: Storage) {
+
+  constructor(private authGuard: AuthGuardService, private apiInt: APiInterfaceService, private modalCtrl: ModalController) {
     const data = apiInt.getData();
     if(data.articles) this.articles = data.articles;
 
@@ -29,18 +25,10 @@ export class ArticlesPage implements OnInit {
     this.articles.forEach(article => {
       article.date_formated = new Date(Date.parse(article.date)).toLocaleString()
     });
-    
+
   }
 
   ngOnInit() {
-  }
-  
-  fav_change(event: any) {
-    if (event.target.checked) { // Ajout aux favoris
-      console.log("add fav")
-    } else { // suppression des favoris
-      console.log("del fav"); 
-    }
   }
 
   logout() {
