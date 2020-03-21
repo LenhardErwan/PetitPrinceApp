@@ -44,7 +44,7 @@ export class APiInterfaceService {
   }
 
   async refreshData() {
-    let data = await this.makeRequest(this.params);
+    const data = await this.makeRequest(this.params);
     
     if(data.erreur) {
       return {data: null, error: data.erreur};
