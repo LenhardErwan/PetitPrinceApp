@@ -28,8 +28,35 @@ export class ArticlesPage implements OnInit {
 
     this.articles.forEach(async article => {
       article.date_formated = new Date(Date.parse(article.date)).toLocaleString();
-      article.fav = await this.getSavedFav(article.id);
+      if (this.getSavedFav(article.id)) {
+        article.fav = await this.getSavedFav(article.id);
+      } else {
+        await this.initFav(article.id);
+        article.fav = await this.getSavedFav(article.id);
+      }
+      
     });
+  }
+
+  async initFav(id: string) {
+    await Storage.set({
+      key: 'fav_' + id,
+      value: 'false'
+    });
+  }
+
+  async setFav(artc: any) {
+    if (artc.fav) {
+      await Storage.set({
+        key: 'fav_' + artc.id,
+        value: 'false'
+      });
+    } else {
+      await Storage.set({
+        key: 'fav_' + artc.id,
+        value: 'true'
+      });
+    }
   }
 
   async getSavedFav(id: string) {
@@ -40,12 +67,14 @@ export class ArticlesPage implements OnInit {
   ngOnInit() {
   }
 
-  fav_change(event: any) {
-    if (event.target.checked) { // Ajout aux favoris
-      console.log("add fav")
-    } else { // suppression des favoris
-      console.log("del fav"); 
-    }
+  fav_change(artc: any) {
+    console.log(artc.fav)
+    this.setFav(artc);
+    this.articles.forEach(async article => {
+      if (article.id == artc.id) {
+        article.fav = !article.fav;
+      }
+    });
   }
 
   async viewComplete(e) {
