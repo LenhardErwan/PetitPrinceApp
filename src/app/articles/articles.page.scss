@@ -9,6 +9,14 @@ ion-card {
     margin-right: auto;
 }
 
+ion-card-subtitle {
+    font-size: 1.4rem;
+}
+
+ion-card-subtitle ion-icon {
+    vertical-align: text-top;
+}
+
 .limitchar {
     white-space: nowrap;
     overflow: hidden;
@@ -20,18 +28,21 @@ ion-card {
     text-align: center;
 }
 
-.right {
-    margin-left: 75%;
-}
-
 img {
     width: 100%;
 }
 
+.right {
+    right: 0;
+    top: 0;
+    position: absolute;
+    z-index: 10;
+}
+
 .isfav {
-    color : yellow;
+    color : rgb(230, 157, 0);
 }
 
 .isnotfav {
-    color: white;
+    color: rgb(139, 139, 139);
 }
