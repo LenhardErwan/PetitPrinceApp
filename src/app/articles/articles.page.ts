@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, ToastController } from '@ionic/angular';
-import { AuthGuardService } from '../services/auth-guard.service';
+import { ModalController, ToastController, PopoverController  } from '@ionic/angular';
 import { APiInterfaceService } from '../services/api-interface.service';
 
-import { ContactPage } from '../contact/contact.page';
+import { PopoverComponent } from '../popover/popover.component';
 import { ArticlePage } from './article/article.page';
+
 
 @Component({
   selector: 'app-articles',
@@ -14,7 +14,7 @@ import { ArticlePage } from './article/article.page';
 export class ArticlesPage implements OnInit {
   private articles: Array<any>;
 
-  constructor(private authGuard: AuthGuardService, private apiInt: APiInterfaceService, private modalCtrl: ModalController, private toastCtrl: ToastController) {
+  constructor(private apiInt: APiInterfaceService, private modalCtrl: ModalController, private toastCtrl: ToastController, private popoverCtrl: PopoverController) {
     const data = apiInt.getData();
     if(data.articles) this.articles = data.articles;
 
@@ -29,18 +29,6 @@ export class ArticlesPage implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  logout() {
-    this.authGuard.disconnect();
-  }
-
-  async contact() {
-    const modal = await this.modalCtrl.create({
-      component: ContactPage
-    });
-
-    modal.present();
   }
 
   fav_change(event: any) {
@@ -98,6 +86,15 @@ export class ArticlesPage implements OnInit {
       color: "danger"
     });
     await toast.present();
+  }
+
+  async presentPopover(event: any) {
+    const popover = await this.popoverCtrl.create({
+      component: PopoverComponent,
+      event: event,
+      translucent: true
+    });
+    return await popover.present();
   }
 
 }

@@ -12,6 +12,11 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
   },
+  {
+    path: 'tuto',
+    canActivate: [AuthGuardService],
+    loadChildren: () => import('./tuto/tuto.module').then( m => m.TutoPageModule)
+  },
 ];
 @NgModule({
   imports: [

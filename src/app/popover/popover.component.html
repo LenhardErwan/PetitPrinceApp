@@ -1,0 +1,26 @@
+<ion-list>
+  <ion-item (click)="contact($event)">
+    <ion-button fill="clear" color="medium" >
+      <ion-icon slot="start" name="information-circle-outline"></ion-icon>
+      À Propos
+    </ion-button>
+  </ion-item>
+  <ion-item (click)="logout($event)">
+    <ion-button fill="clear" color="medium" >
+      <ion-icon slot="start" name="log-out-outline"></ion-icon>
+      Se Déconnecter
+    </ion-button>
+  </ion-item>
+  <ion-item (click)="tuto($event)">
+    <ion-button fill="clear" color="medium" >
+      <ion-icon slot="start" name="easel-outline"></ion-icon>
+      Tutoriel
+    </ion-button>
+  </ion-item>
+  <ion-item (click)="close($event)">
+    <ion-button fill="clear" color="medium" >
+      <ion-icon slot="start" name="close-outline"></ion-icon>
+      Fermer
+    </ion-button>
+  </ion-item>
+</ion-list>
