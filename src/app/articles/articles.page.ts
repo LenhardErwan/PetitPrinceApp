@@ -5,6 +5,10 @@ import { APiInterfaceService } from '../services/api-interface.service';
 import { PopoverComponent } from '../popover/popover.component';
 import { ArticlePage } from './article/article.page';
 
+import { Plugins } from '@capacitor/core';
+
+const { Storage } = Plugins;
+
 
 @Component({
   selector: 'app-articles',
@@ -22,10 +26,15 @@ export class ArticlesPage implements OnInit {
       return Date.parse(a.date) > Date.parse(b.date) ? -1 : 1;
     })
 
-    this.articles.forEach(article => {
-      article.date_formated = new Date(Date.parse(article.date)).toLocaleString()
+    this.articles.forEach(async article => {
+      article.date_formated = new Date(Date.parse(article.date)).toLocaleString();
+      article.fav = await this.getSavedFav(article.id);
     });
+  }
 
+  async getSavedFav(id: string) {
+    const data = await Storage.get({ key: 'fav_'+id });
+    return data.value ? JSON.parse(data.value) : false;
   }
 
   ngOnInit() {
