@@ -17,10 +17,9 @@ export class TabsPage {
   }
 
   async isNeededTuto() {
-    const needed = await this.getSavedNeedTuto()
-    console.log(needed)
+    const needed = await this.getSavedNeedTuto();
     if(needed) {
-      this.router.navigateByUrl('/tuto')
+      this.router.navigateByUrl('/tuto');
     }
   }
 
