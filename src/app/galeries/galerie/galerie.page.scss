@@ -1,19 +1,16 @@
-.galerie {
-    text-align: center;
-    background-color: rgba(236, 236, 236, 0.863);
-}
 ion-content {
     --background: #c1f8ff;
 }
 
-#back-color {
-    background-color: rgba(236, 236, 236, 0.863);
+ion-card {
+    --background: rgba(240, 240, 240, 0.9);
 }
 
-.padd {
-    padding: 20px;
-}
-
-.borderr {
+ion-card img {
     border: 2px solid black;
+}
+
+ion-card div {
+    text-align: center;
+    padding: 2vh;
 }
