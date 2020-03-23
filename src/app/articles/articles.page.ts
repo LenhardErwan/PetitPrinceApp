@@ -17,6 +17,7 @@ const { Storage } = Plugins;
 })
 export class ArticlesPage implements OnInit {
   private articles: Array<any>;
+  private showedArticles: Array<any>;
 
   constructor(private apiInt: APiInterfaceService, private modalCtrl: ModalController, private toastCtrl: ToastController, private popoverCtrl: PopoverController) {
     const data = apiInt.getData();
@@ -36,6 +37,8 @@ export class ArticlesPage implements OnInit {
       }
       
     });
+
+    this.showedArticles = this.articles;
   }
 
   async initFav(id: string) {
@@ -46,17 +49,11 @@ export class ArticlesPage implements OnInit {
   }
 
   async setFav(artc: any) {
-    if (artc.fav) {
-      await Storage.set({
-        key: 'fav_' + artc.id,
-        value: 'false'
-      });
-    } else {
-      await Storage.set({
-        key: 'fav_' + artc.id,
-        value: 'true'
-      });
-    }
+    const value = !artc.fav;
+    await Storage.set({
+      key: 'fav_' + artc.id,
+      value: JSON.stringify(value)
+    });
   }
 
   async getSavedFav(id: string) {
@@ -68,7 +65,6 @@ export class ArticlesPage implements OnInit {
   }
 
   fav_change(artc: any) {
-    console.log(artc.fav)
     this.setFav(artc);
     this.articles.forEach(async article => {
       if (article.id == artc.id) {
@@ -94,7 +90,7 @@ export class ArticlesPage implements OnInit {
     modal.present();
   }
 
-  async doRefresh(event) {
+  async doRefresh(event: any) {
     try{
       const data:any = await this.apiInt.refreshData();
 
@@ -114,6 +110,17 @@ export class ArticlesPage implements OnInit {
     finally {
       event.target.complete();
     }
+  }
+
+  handleChangeSearch(e: any) {
+    const value = e.detail.value.toLowerCase();
+
+    this.showedArticles = new Array();
+    this.articles.forEach(article => {
+      if(article.titre.toLowerCase().includes(value) || article.texte.toLowerCase().includes(value)) {
+        this.showedArticles.push(article);
+      }
+    })
   }
 
   async toastError(error: string) {
