@@ -3,6 +3,7 @@ import { ModalController, ToastController, PopoverController  } from '@ionic/ang
 import { APiInterfaceService } from '../services/api-interface.service';
 
 import { PopoverComponent } from '../popover/popover.component';
+import { PopoverFavComponent } from './popover-fav/popover-fav.component'
 import { ArticlePage } from './article/article.page';
 
 import { Plugins } from '@capacitor/core';
@@ -18,6 +19,8 @@ const { Storage } = Plugins;
 export class ArticlesPage implements OnInit {
   private articles: Array<any>;
   private showedArticles: Array<any>;
+  private onlyFav: boolean = false;
+  private filter: string = "";
 
   constructor(private apiInt: APiInterfaceService, private modalCtrl: ModalController, private toastCtrl: ToastController, private popoverCtrl: PopoverController) {
     const data = apiInt.getData();
@@ -112,15 +115,43 @@ export class ArticlesPage implements OnInit {
     }
   }
 
-  handleChangeSearch(e: any) {
-    const value = e.detail.value.toLowerCase();
-
+  sortArtcileFilter() {
     this.showedArticles = new Array();
+
     this.articles.forEach(article => {
-      if(article.titre.toLowerCase().includes(value) || article.texte.toLowerCase().includes(value)) {
-        this.showedArticles.push(article);
+      if(article.titre.toLowerCase().includes(this.filter) || article.texte.toLowerCase().includes(this.filter)) {
+        if(this.onlyFav) {
+          if(article.fav) this.showedArticles.push(article);
+        }
+        else {
+          this.showedArticles.push(article);
+        }
       }
     })
+  }
+
+  handleChangeSearch(e: any) {
+    this.filter = e.detail.value.toLowerCase();
+    this.sortArtcileFilter();
+  }
+
+  setOnlyFav(bool: boolean) {
+    this.onlyFav = bool;
+    this.sortArtcileFilter();
+  }
+
+  async popoverOnlyFav(event: any) {
+    let popover = await this.popoverCtrl.create({
+      component: PopoverFavComponent,
+      event: event,
+      translucent: true,
+      componentProps: {
+        onlyFav: this.onlyFav,
+        setOnlyFav: this.setOnlyFav.bind(this)
+      }
+    });
+
+    return await popover.present();
   }
 
   async toastError(error: string) {

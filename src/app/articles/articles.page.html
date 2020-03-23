@@ -11,7 +11,11 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-  <ion-searchbar (ionChange)="handleChangeSearch($event)" placeholder="Rechercher..." autocomplete="on" autocorrect="on"></ion-searchbar>
+  <ion-searchbar (ionChange)="handleChangeSearch($event)" placeholder="Rechercher..." autocomplete="on" autocorrect="on">
+    <ion-button fill="clear" color="medium" (click)="popoverOnlyFav($event)" >
+      <ion-icon slot="icon-only" name="options"></ion-icon>
+    </ion-button>
+  </ion-searchbar>
   <ion-row *ngFor="let article of showedArticles">
     <ion-card>
       <img *ngIf="article.photos[0]" src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{ article.photos[0].image }}">

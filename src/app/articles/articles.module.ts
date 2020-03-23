@@ -8,6 +8,7 @@ import { ArticlesPageRoutingModule } from './articles-routing.module';
 
 import { ArticlesPage } from './articles.page';
 import { ArticlePageModule } from './article/article.module';
+import { PopoverFavComponent } from './popover-fav/popover-fav.component';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { ArticlePageModule } from './article/article.module';
     ArticlesPageRoutingModule,
     ArticlePageModule
   ],
-  declarations: [ArticlesPage]
+  entryComponents: [PopoverFavComponent],
+  declarations: [ArticlesPage, PopoverFavComponent]
 })
 export class ArticlesPageModule {}
