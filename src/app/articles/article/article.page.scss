@@ -1,3 +1,16 @@
-.center {
+ion-content {
+    --background: #c1f8ff;
+}
+
+ion-card {
+    --background: rgb(250, 250, 250);
+}
+
+ion-card img {
+    border: 2px solid black;
+}
+
+ion-card div {
     text-align: center;
+    padding: 2vh;
 }
