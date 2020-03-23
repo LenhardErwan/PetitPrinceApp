@@ -16,28 +16,33 @@
       <ion-icon slot="icon-only" name="options"></ion-icon>
     </ion-button>
   </ion-searchbar>
-  <ion-row *ngFor="let article of showedArticles">
-    <ion-card>
-      <img *ngIf="article.photos[0]" src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{ article.photos[0].image }}">
-      <ion-card-header> 
-        <ion-button class="right" fill="clear" (click)="fav_change(article)">
-          <ion-icon slot="icon-only" [ngClass]="{ 'isfav': article.fav, 'isnotfav': !article.fav }" name="star" size="normal">></ion-icon>
-        </ion-button>
-        <ion-card-subtitle>
-          <ion-icon *ngIf="article.important" name="warning"></ion-icon> 
-          {{ article.categorie }} 
-        </ion-card-subtitle>
-        
-        <ion-card-title> <strong> {{ article.titre }} </strong>  </ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p class="limitchar"> {{ article.texte }} </p> <br>
-        {{ article.date_formated }} <br>
-        <div class="center"> 
-            <ion-button fill="outline" class="marg" slot="end" (click)="viewComplete( article )">Lire</ion-button>
-        </div>
-      </ion-card-content>
-    </ion-card>
-  </ion-row>
+  <div *ngIf="showedArticles.length > 0">
+    <ion-row *ngFor="let article of showedArticles">
+      <ion-card>
+        <img *ngIf="article.photos[0]" src="http://www.sebastien-thon.fr/cours/M4104Cip/projet/images/{{ article.photos[0].image }}">
+        <ion-card-header> 
+          <ion-button class="right" fill="clear" (click)="fav_change(article)">
+            <ion-icon slot="icon-only" [ngClass]="{ 'isfav': article.fav, 'isnotfav': !article.fav }" name="star" size="normal">></ion-icon>
+          </ion-button>
+          <ion-card-subtitle>
+            <ion-icon *ngIf="article.important" name="warning"></ion-icon> 
+            {{ article.categorie }} 
+          </ion-card-subtitle>
+          
+          <ion-card-title> <strong> {{ article.titre }} </strong>  </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p class="limitchar"> {{ article.texte }} </p> <br>
+          {{ article.date_formated }} <br>
+          <div class="center"> 
+              <ion-button fill="outline" class="marg" slot="end" (click)="viewComplete( article )">Lire</ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </div>
+  <div class="center" *ngIf="showedArticles.length <= 0">
+    <p>Aucun résultat</p>
+  </div>
 
 </ion-content>

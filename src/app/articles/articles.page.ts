@@ -74,6 +74,7 @@ export class ArticlesPage implements OnInit {
         article.fav = !article.fav;
       }
     });
+    this.sortArtcileFilter();
   }
 
   async viewComplete(e) {
@@ -127,7 +128,7 @@ export class ArticlesPage implements OnInit {
           this.showedArticles.push(article);
         }
       }
-    })
+    });
   }
 
   handleChangeSearch(e: any) {
