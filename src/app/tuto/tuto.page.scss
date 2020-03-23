@@ -8,3 +8,14 @@ ion-slides {
   top: 50%;
   transform: translateY(-50%);
 }
+
+ion-slide div {
+  block-size: auto;
+  margin-bottom: 2vh;
+}
+
+ion-slide img {
+  border: 2px solid black;
+  width: 70%;
+  height: 70%;
+}
