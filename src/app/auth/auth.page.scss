@@ -2,9 +2,8 @@ ion-content ion-toolbar {
   --background: translucent;
 }
 
-ion-item {
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+ion-button {
+  margin-top: 1rem;
 }
 
 ion-spinner {
@@ -19,8 +18,13 @@ ion-spinner {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  // background-image: url("../../assets/icon/favicon.png");
+  // background-repeat: no-repeat;
+  // background-size: contain;
 }
 
-#container h1 {
-  margin-bottom: 20vh;
+#container img {
+  width: auto;
+  height: 40vh;
+  margin-bottom: 5vh;
 }
