@@ -20,6 +20,6 @@ npx cap sync android
 npx cap open android
 ```
 
-## Copyright & License
+## Copyright & Licence
 
 Tous droits réservés à LENHARD Erwan & SORIA Arnaud
