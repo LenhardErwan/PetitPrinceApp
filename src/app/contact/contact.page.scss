@@ -1,3 +1,14 @@
+ion-content ion-toolbar {
+  --background: translucent;
+}
+
+ion-content {
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	-ms-user-select: text;
+	user-select: text;
+}
+
 #container {
   text-align: center;
 
@@ -8,17 +19,8 @@
   transform: translateY(-50%);
 }
 
-ion-content ion-toolbar {
-  --background: translucent;
-}
-
-ion-spinner {
-  margin-right: 1rem;
-}
-
-ion-content {
-	-webkit-user-select: text;
-	-moz-user-select: text;
-	-ms-user-select: text;
-	user-select: text;
+#container img {
+  width: auto;
+  height: 40vh;
+  margin-bottom: 5vh;
 }
