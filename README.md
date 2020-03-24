@@ -8,7 +8,6 @@ Développement d'une application pour smartphone à destination des parents d'é
 Pour visualiser le projet sur un navigateur, effectuez les commandes suivantes :
 ```
 npm install
-ionic build
 ionic serve
 ```
 
