@@ -1,4 +1,4 @@
-# PetitPrinceApp
+# Petit Prince Application
 Projet d'application mobile dans le cadre de nos études avec le framework [Ionic](https://ionicframework.com).<br/>
 <br/>
 Développement d'une application pour smartphone à destination des parents d'élèves de l'école maternelle «Le petit Prince»
